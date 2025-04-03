@@ -1,0 +1,5 @@
+services:
+  app:
+    image: thecodingmachine/php:${PHP_VERSION:-8.2}-v4-cli
+    volumes:
+      - ./:/usr/src/app
