@@ -231,7 +231,7 @@ Attributes contain tracking values and cover one or more of the
 parameters:
 
 | Attribute | Matomo API parameter |
-|-|-|-|
+| --- | --- |
 | `ActionName` | `action_name` |
 | `ApiVersion` (*) | `apiv` |
 | `AuthToken` | `token_auth` |
