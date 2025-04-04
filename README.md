@@ -189,6 +189,8 @@ final class Example
 }
 ```
 
+### Action factories
+
 If there are additional attributes which should be added to actions by default,
 you can add a custom `ActionFactoryInterface`. This should wrap or [decorate](https://symfony.com/doc/current/service_container/service_decoration.html)
 the default `ActionFactory` to ensure all default attributes are added:
