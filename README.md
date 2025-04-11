@@ -96,7 +96,7 @@ $matomo = new Matomo(
     new NullLogger(),
 );
 
-$this->matomo->track(...);
+$matomo->track(...);
 ```
 
 ### Server requests
@@ -169,6 +169,8 @@ You can also create an action from a PSR-7 `ServerRequestInterface` if desired:
 
 ```php
 use Pagemachine\MatomoTracking\Matomo;
+use Pagemachine\MatomoTracking\Tracking\Attributes\ActionName;
+use Pagemachine\MatomoTracking\Tracking\Attributes\SiteId;
 use Psr\Http\Message\ServerRequestInterface;
 
 final class Example
@@ -182,6 +184,7 @@ final class Example
     {
         // Url attribute is determined from request
         $action = $this->actionFactory->createActionFromRequest($request)
+            ->withAttribute(new SiteId(1))
             ->withAttribute(new ActionName('Demo Page'));
 
         $this->matomo->track($action);
