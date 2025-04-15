@@ -242,6 +242,7 @@ parameters:
 | `AuthToken` | `token_auth` |
 | `BotTracking` | `bots` |
 | `CustomAction` | `ca` |
+| `DownloadUrl` | `download` |
 | `Language` | `lang` |
 | `NoResponse` (*) | `send_image` |
 | `Random` (*) | `rand` |
