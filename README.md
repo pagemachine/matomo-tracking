@@ -235,13 +235,14 @@ Attributes contain tracking values and cover one or more of the
 [Matomo Tracking HTTP API](https://developer.matomo.org/api-reference/tracking-api)
 parameters:
 
-| Attribute | Matomo API parameter |
+| Attribute | Matomo API parameters |
 | --- | --- |
 | `ActionName` | `action_name` |
 | `ApiVersion` (*) | `apiv` |
 | `AuthToken` | `token_auth` |
 | `BotTracking` | `bots` |
 | `CustomAction` | `ca` |
+| `Download` | `download`, `url`, `ca` |
 | `DownloadUrl` | `download` |
 | `Language` | `lang` |
 | `NoResponse` (*) | `send_image` |
