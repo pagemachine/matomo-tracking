@@ -241,6 +241,7 @@ parameters:
 | `ApiVersion` (*) | `apiv` |
 | `AuthToken` | `token_auth` |
 | `BotTracking` | `bots` |
+| `CustomAction` | `ca` |
 | `Language` | `lang` |
 | `NoResponse` (*) | `send_image` |
 | `Random` (*) | `rand` |
