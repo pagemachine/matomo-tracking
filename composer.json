@@ -1,6 +1,6 @@
 {
     "name": "pagemachine/matomo-tracking",
-    "description": "Server-side Matomo tracking API",
+    "description": "Server-side Matomo tracking API with emphasis on privacy: consentless tracking, GDPR/TDDDG-compliant, respects DNT/GPC",
     "license": "GPL-3.0-or-later",
     "require": {
         "php": "^8.1",
