@@ -254,6 +254,55 @@ final class TrackingTest extends TestCase
     }
 
     #[Test]
+    public function tracksServerRequestsWithAttributesAndCustomActionFactory(): void
+    {
+        $customActionFactory = new class ($this->actionFactory) implements ActionFactoryInterface {
+            public function __construct(private readonly ActionFactoryInterface $decorated)
+            {
+            }
+
+            public function createAction(): ActionInterface
+            {
+                return $this->decorated->createAction();
+            }
+
+            public function createActionFromRequest(ServerRequestInterface $serverRequest): ActionInterface
+            {
+                return $this->decorated->createActionFromRequest($serverRequest)
+                    ->withAttribute(new Url('http://example.com/custom-factory'));
+            }
+        };
+
+        $httpFactory = new HttpFactory();
+
+        $matomo = new Matomo(
+            $this->mockMatomoServer->getServerRoot(),
+            $customActionFactory,
+            new ActionTracker(
+                $httpFactory,
+                $httpFactory,
+                new Client([
+                    RequestOptions::TIMEOUT => self::HTTP_CLIENT_TIMEOUT_SECONDS,
+                ]),
+                new NullLogger(),
+            ),
+            new NullLogger(),
+        );
+
+        $serverRequest = $this->serverRequestFactory->createServerRequest('GET', 'http://example.com/test')
+            ->withAttribute('matomo.attributes', [
+                new SiteId(1),
+                new Url('http://example.com/custom-url')
+            ]);
+        $matomo->track($serverRequest);
+
+        $parameters = $this->mockMatomoServer->getLastRequest()->getPost();
+
+        self::assertArrayHasKey('url', $parameters);
+        self::assertSame('http://example.com/custom-url', $parameters['url']);
+    }
+
+    #[Test]
     public function tracksServerRequestsWithDoNotTrackDisabled(): void
     {
         $serverRequest = $this->serverRequestFactory->createServerRequest('GET', 'http://example.com/test')

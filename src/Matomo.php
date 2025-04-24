@@ -40,7 +40,12 @@ final class Matomo implements InstanceInterface
                 return;
             }
 
+            $attributes = $action->getAttribute('matomo.attributes', []);
             $action = $this->actionFactory->createActionFromRequest($action);
+
+            foreach ($attributes as $attribute) {
+                $action = $action->withAttribute($attribute);
+            }
         }
 
         try {

@@ -29,10 +29,6 @@ final class ActionFactory implements ActionFactoryInterface
             ->withAttribute(new Url((string)$serverRequest->getUri()))
             ->withAttribute(new ReferrerUrl($serverRequest->getServerParams()['HTTP_REFERER'] ?? ''));
 
-        foreach ($serverRequest->getAttribute('matomo.attributes', []) as $attribute) {
-            $action = $action->withAttribute($attribute);
-        }
-
         return $action;
     }
 }
