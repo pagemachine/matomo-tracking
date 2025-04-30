@@ -249,6 +249,10 @@ parameters:
 | `Random` (*) | `rand` |
 | `Recording` (*) | `rec` |
 | `ReferrerUrl` | `urlref` |
+| `Search` | `search`, `search_count`, `search_cat`, `ca` |
+| `SearchCategory` | `search_cat` |
+| `SearchKeyword` | `search` |
+| `SearchResultCount` | `search_count` |
 | `SiteId` | `idsite` |
 | `Url` | `url` |
 | `UserAgent` | `ua` |
