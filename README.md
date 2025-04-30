@@ -250,6 +250,7 @@ parameters:
 | `Recording` (*) | `rec` |
 | `ReferrerUrl` | `urlref` |
 | `SearchKeyword` | `search` |
+| `SearchResultCount` | `search_count` |
 | `SiteId` | `idsite` |
 | `Url` | `url` |
 | `UserAgent` | `ua` |
