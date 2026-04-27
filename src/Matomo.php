@@ -14,13 +14,13 @@ use Pagemachine\MatomoTracking\Tracking\TrackingRequestException;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Log\LoggerInterface;
 
-final class Matomo implements InstanceInterface
+final readonly class Matomo implements InstanceInterface
 {
     public function __construct(
-        private readonly string $uri,
-        private readonly ActionFactoryInterface $actionFactory,
-        private readonly ActionTracker $tracker,
-        private readonly LoggerInterface $logger,
+        private string $uri,
+        private ActionFactoryInterface $actionFactory,
+        private ActionTracker $tracker,
+        private LoggerInterface $logger,
     ) {
     }
 

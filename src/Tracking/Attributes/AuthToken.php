@@ -9,11 +9,11 @@ use Pagemachine\MatomoTracking\Tracking\AttributeInterface;
 /**
  * 32 character authorization key used to authenticate the API request.
  */
-final class AuthToken implements AttributeInterface
+final readonly class AuthToken implements AttributeInterface
 {
     public function __construct(
         #[\SensitiveParameter]
-        private readonly string $authToken,
+        private string $authToken,
     ) {
     }
 

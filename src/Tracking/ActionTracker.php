@@ -14,13 +14,13 @@ use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\UriFactoryInterface;
 use Psr\Log\LoggerInterface;
 
-final class ActionTracker
+final readonly class ActionTracker
 {
     public function __construct(
-        private readonly UriFactoryInterface $uriFactory,
-        private readonly RequestFactoryInterface $requestFactory,
-        private readonly ClientInterface $httpClient,
-        private readonly LoggerInterface $logger,
+        private UriFactoryInterface $uriFactory,
+        private RequestFactoryInterface $requestFactory,
+        private ClientInterface $httpClient,
+        private LoggerInterface $logger,
     ) {
     }
 

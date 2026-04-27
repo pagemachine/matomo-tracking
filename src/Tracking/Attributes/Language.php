@@ -9,9 +9,9 @@ use Pagemachine\MatomoTracking\Tracking\AttributeInterface;
 /**
  * An override value for the Accept-Language HTTP header field. This value is used to detect the visitor's country if GeoIP is not enabled.
  */
-final class Language implements AttributeInterface
+final readonly class Language implements AttributeInterface
 {
-    public function __construct(private readonly string $language)
+    public function __construct(private string $language)
     {
     }
 

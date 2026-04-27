@@ -9,9 +9,9 @@ use Pagemachine\MatomoTracking\Tracking\AttributeInterface;
 /**
  * The ID of the website we're tracking a visit/action for.
  */
-final class SiteId implements AttributeInterface
+final readonly class SiteId implements AttributeInterface
 {
-    public function __construct(private readonly string|int $siteId)
+    public function __construct(private string|int $siteId)
     {
     }
 

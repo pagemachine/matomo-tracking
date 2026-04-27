@@ -9,12 +9,12 @@ use Pagemachine\MatomoTracking\Tracking\AttributeInterface;
 /**
  * A site search.
  */
-final class Search implements AttributeInterface
+final readonly class Search implements AttributeInterface
 {
     public function __construct(
-        private readonly string $keyword,
-        private readonly int $count,
-        private readonly string $category = '',
+        private string $keyword,
+        private int $count,
+        private string $category = '',
     ) {
     }
 

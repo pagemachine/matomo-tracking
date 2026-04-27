@@ -9,9 +9,9 @@ use Pagemachine\MatomoTracking\Tracking\AttributeInterface;
 /**
  * The site search keyword.
  */
-final class SearchKeyword implements AttributeInterface
+final readonly class SearchKeyword implements AttributeInterface
 {
-    public function __construct(private readonly string $keyword)
+    public function __construct(private string $keyword)
     {
     }
 
