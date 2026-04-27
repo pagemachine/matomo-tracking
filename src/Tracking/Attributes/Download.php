@@ -9,9 +9,9 @@ use Pagemachine\MatomoTracking\Tracking\AttributeInterface;
 /**
  * Represents all attributes of a download action
  */
-final class Download implements AttributeInterface
+final readonly class Download implements AttributeInterface
 {
-    public function __construct(private readonly string $url)
+    public function __construct(private string $url)
     {
     }
 

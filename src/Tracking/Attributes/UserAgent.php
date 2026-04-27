@@ -9,9 +9,9 @@ use Pagemachine\MatomoTracking\Tracking\AttributeInterface;
 /**
  * An override value for the User-Agent HTTP header field. The user agent is used to detect the operating system and browser used.
  */
-final class UserAgent implements AttributeInterface
+final readonly class UserAgent implements AttributeInterface
 {
-    public function __construct(private readonly string $userAgent)
+    public function __construct(private string $userAgent)
     {
     }
 

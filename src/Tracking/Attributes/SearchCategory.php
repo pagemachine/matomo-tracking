@@ -9,9 +9,9 @@ use Pagemachine\MatomoTracking\Tracking\AttributeInterface;
 /**
  * The category related to a search.
  */
-final class SearchCategory implements AttributeInterface
+final readonly class SearchCategory implements AttributeInterface
 {
-    public function __construct(private readonly string $category)
+    public function __construct(private string $category)
     {
     }
 

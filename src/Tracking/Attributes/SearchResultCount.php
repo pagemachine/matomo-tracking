@@ -9,9 +9,9 @@ use Pagemachine\MatomoTracking\Tracking\AttributeInterface;
 /**
  * The number of search results displayed on the results page.
  */
-final class SearchResultCount implements AttributeInterface
+final readonly class SearchResultCount implements AttributeInterface
 {
-    public function __construct(private readonly int $count)
+    public function __construct(private int $count)
     {
     }
 

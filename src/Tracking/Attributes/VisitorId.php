@@ -9,11 +9,11 @@ use Pagemachine\MatomoTracking\Tracking\AttributeInterface;
 /**
  * The unique visitor ID, must be a 16 characters hexadecimal string. Every unique visitor must be assigned a different ID and this ID must not change after it is assigned.
  */
-final class VisitorId implements AttributeInterface
+final readonly class VisitorId implements AttributeInterface
 {
     private const VISITOR_ID_BYTES = 8;
 
-    private readonly string $visitorId;
+    private string $visitorId;
 
     public function __construct()
     {

@@ -6,11 +6,11 @@ namespace Pagemachine\MatomoTracking\Tracking;
 
 use Psr\Http\Message\ServerRequestInterface;
 
-final class TrackingPreference
+final readonly class TrackingPreference
 {
     public function __construct(
-        public readonly bool $isAllowed,
-        public readonly string $reason,
+        public bool $isAllowed,
+        public string $reason,
     ) {
     }
 

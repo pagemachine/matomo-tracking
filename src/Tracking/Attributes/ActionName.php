@@ -9,9 +9,9 @@ use Pagemachine\MatomoTracking\Tracking\AttributeInterface;
 /**
  * The title of the action being tracked. For page tracks this is used as page title.
  */
-final class ActionName implements AttributeInterface
+final readonly class ActionName implements AttributeInterface
 {
-    public function __construct(private readonly string $actionName)
+    public function __construct(private string $actionName)
     {
     }
 
