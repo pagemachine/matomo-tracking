@@ -249,6 +249,7 @@ parameters:
 | `Language` | `lang` |
 | `NoResponse` (*) | `send_image` |
 | `OrderId` | `ec_id` |
+| `OrderSubTotal` | `ec_st` |
 | `Random` (*) | `rand` |
 | `Recording` (*) | `rec` |
 | `ReferrerUrl` | `urlref` |
