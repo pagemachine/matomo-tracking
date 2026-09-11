@@ -244,8 +244,17 @@ parameters:
 | `CustomAction` | `ca` |
 | `Download` | `download`, `url`, `ca` |
 | `DownloadUrl` | `download` |
+| `GoalId` | `idgoal` |
+| `GoalRevenue` | `revenue` |
 | `Language` | `lang` |
 | `NoResponse` (*) | `send_image` |
+| `Order` | `idgoal`, `ec_id`, `ec_items`, `revenue`, `ec_st`, `ec_tx`, `ec_sh`, `ec_dt` |
+| `OrderDiscount` | `ec_dt` |
+| `OrderId` | `ec_id` |
+| `OrderItems` | `ec_items` |
+| `OrderShippingCosts` | `ec_sh` |
+| `OrderSubTotal` | `ec_st` |
+| `OrderTax` | `ec_tx` |
 | `Random` (*) | `rand` |
 | `Recording` (*) | `rec` |
 | `ReferrerUrl` | `urlref` |
