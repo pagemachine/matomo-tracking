@@ -245,6 +245,7 @@ parameters:
 | `Download` | `download`, `url`, `ca` |
 | `DownloadUrl` | `download` |
 | `GoalId` | `idgoal` |
+| `GoalRevenue` | `revenue` |
 | `Language` | `lang` |
 | `NoResponse` (*) | `send_image` |
 | `Random` (*) | `rand` |
