@@ -244,6 +244,7 @@ parameters:
 | `CustomAction` | `ca` |
 | `Download` | `download`, `url`, `ca` |
 | `DownloadUrl` | `download` |
+| `GoalId` | `idgoal` |
 | `Language` | `lang` |
 | `NoResponse` (*) | `send_image` |
 | `Random` (*) | `rand` |
