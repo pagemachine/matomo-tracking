@@ -250,6 +250,7 @@ parameters:
 | `NoResponse` (*) | `send_image` |
 | `OrderDiscount` | `ec_dt` |
 | `OrderId` | `ec_id` |
+| `OrderItems` | `ec_items` |
 | `OrderShippingCosts` | `ec_sh` |
 | `OrderSubTotal` | `ec_st` |
 | `OrderTax` | `ec_tx` |
