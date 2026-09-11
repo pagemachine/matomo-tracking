@@ -249,6 +249,7 @@ parameters:
 | `Language` | `lang` |
 | `NoResponse` (*) | `send_image` |
 | `OrderId` | `ec_id` |
+| `OrderShippingCosts` | `ec_sh` |
 | `OrderSubTotal` | `ec_st` |
 | `OrderTax` | `ec_tx` |
 | `Random` (*) | `rand` |
