@@ -248,6 +248,7 @@ parameters:
 | `GoalRevenue` | `revenue` |
 | `Language` | `lang` |
 | `NoResponse` (*) | `send_image` |
+| `OrderDiscount` | `ec_dt` |
 | `OrderId` | `ec_id` |
 | `OrderShippingCosts` | `ec_sh` |
 | `OrderSubTotal` | `ec_st` |
