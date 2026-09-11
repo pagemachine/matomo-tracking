@@ -250,6 +250,7 @@ parameters:
 | `NoResponse` (*) | `send_image` |
 | `OrderId` | `ec_id` |
 | `OrderSubTotal` | `ec_st` |
+| `OrderTax` | `ec_tx` |
 | `Random` (*) | `rand` |
 | `Recording` (*) | `rec` |
 | `ReferrerUrl` | `urlref` |
