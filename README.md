@@ -257,6 +257,7 @@ parameters:
 | `OrderTax` | `ec_tx` |
 | `Random` (*) | `rand` |
 | `Recording` (*) | `rec` |
+| `RecordingMode` | `recMode` |
 | `ReferrerUrl` | `urlref` |
 | `Search` | `search`, `search_count`, `search_cat`, `ca` |
 | `SearchCategory` | `search_cat` |
@@ -298,3 +299,14 @@ final class ExampleDimension implements AttributeInterface
 
 The keys of the iterable (`array`, `\Generator`, etc.) returned by `toParameters()`
 must be parameters of the [Matomo Tracking HTTP API](https://developer.matomo.org/api-reference/tracking-api).
+
+### Bot Tracking
+
+By default Matomo tries to detect bot traffic and discards it. This default behavior
+can be adjusted by passing suitable attributes:
+
+| Behavior | Attribute |
+| --- | --- |
+| Track visitors and bots as visitors | `BotTracking` |
+| Track visitors and bots separately | `RecordingMode::Auto` |
+| Track bots only | `RecordingMode::BotsOnly` |
