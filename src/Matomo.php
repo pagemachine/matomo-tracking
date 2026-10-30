@@ -29,6 +29,12 @@ final readonly class Matomo implements InstanceInterface
      */
     public function track(ServerRequestInterface|ActionInterface $action): void
     {
+        if ($this->uri === '') {
+            $this->logger->warning('Tracking skipped: Matomo URI is unset');
+
+            return;
+        }
+
         if ($action instanceof ServerRequestInterface) {
             $trackingPreference = TrackingPreference::fromRequest($action);
 

@@ -66,6 +66,30 @@ final class TrackingTest extends TestCase
     }
 
     #[Test]
+    public function skipsWithoutMatomoUri(): void
+    {
+        $matomo = new Matomo(
+            '',
+            $this->actionFactory,
+            new ActionTracker(
+                $this->httpFactory,
+                $this->httpFactory,
+                new Client([
+                    RequestOptions::TIMEOUT => self::HTTP_CLIENT_TIMEOUT_SECONDS,
+                ]),
+                new NullLogger(),
+            ),
+            new NullLogger(),
+        );
+        $action = (new ActionFactory())->createAction()
+            ->withAttribute(new SiteId(1));
+
+        $matomo->track($action);
+
+        self::assertNull($this->mockMatomoServer->getLastRequest());
+    }
+
+    #[Test]
     #[DataProvider('minimalActions')]
     public function tracksWithEssentials(ActionInterface|ServerRequestInterface $action): void
     {
