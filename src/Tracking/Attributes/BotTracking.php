@@ -7,7 +7,7 @@ namespace Pagemachine\MatomoTracking\Tracking\Attributes;
 use Pagemachine\MatomoTracking\Tracking\AttributeInterface;
 
 /**
- * Enable tracking of bots
+ * Enable tracking of bots as normal visits/actions
  */
 final class BotTracking implements AttributeInterface
 {
