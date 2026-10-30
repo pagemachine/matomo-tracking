@@ -27,7 +27,6 @@ use Pagemachine\MatomoTracking\Tracking\TrackingException;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\ServerRequestFactoryInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Log\NullLogger;
 
@@ -39,7 +38,7 @@ final class TrackingTest extends TestCase
 
     private ActionFactoryInterface $actionFactory;
 
-    private ServerRequestFactoryInterface $serverRequestFactory;
+    private HttpFactory $httpFactory;
 
     private const HTTP_CLIENT_TIMEOUT_SECONDS = 0.5;
 
@@ -49,14 +48,14 @@ final class TrackingTest extends TestCase
         $this->mockMatomoServer->start();
 
         $this->actionFactory = new ActionFactory();
-        $this->serverRequestFactory = $httpFactory = new HttpFactory();
+        $this->httpFactory = new HttpFactory();
 
         $this->matomo = new Matomo(
             $this->mockMatomoServer->getServerRoot(),
             $this->actionFactory,
             new ActionTracker(
-                $httpFactory,
-                $httpFactory,
+                $this->httpFactory,
+                $this->httpFactory,
                 new Client([
                     RequestOptions::TIMEOUT => self::HTTP_CLIENT_TIMEOUT_SECONDS,
                 ]),
@@ -207,7 +206,7 @@ final class TrackingTest extends TestCase
     #[Test]
     public function tracksServerRequestsWithVisitorId(): void
     {
-        $serverRequest1 = $this->serverRequestFactory->createServerRequest('GET', 'http://example.com/test')
+        $serverRequest1 = $this->httpFactory->createServerRequest('GET', 'http://example.com/test')
             ->withAttribute('matomo.attributes', [new SiteId(1)]);
 
         $this->matomo->track($serverRequest1);
@@ -218,7 +217,7 @@ final class TrackingTest extends TestCase
 
         $serverRequest1Parameters2 = $this->mockMatomoServer->getLastRequest()->getPost();
 
-        $serverRequest2 = $this->serverRequestFactory->createServerRequest('GET', 'http://example.com/test')
+        $serverRequest2 = $this->httpFactory->createServerRequest('GET', 'http://example.com/test')
             ->withAttribute('matomo.attributes', [new SiteId(1)]);
 
         $this->matomo->track($serverRequest2);
@@ -273,14 +272,12 @@ final class TrackingTest extends TestCase
             }
         };
 
-        $httpFactory = new HttpFactory();
-
         $matomo = new Matomo(
             $this->mockMatomoServer->getServerRoot(),
             $customActionFactory,
             new ActionTracker(
-                $httpFactory,
-                $httpFactory,
+                $this->httpFactory,
+                $this->httpFactory,
                 new Client([
                     RequestOptions::TIMEOUT => self::HTTP_CLIENT_TIMEOUT_SECONDS,
                 ]),
@@ -289,7 +286,7 @@ final class TrackingTest extends TestCase
             new NullLogger(),
         );
 
-        $serverRequest = $this->serverRequestFactory->createServerRequest('GET', 'http://example.com/test')
+        $serverRequest = $this->httpFactory->createServerRequest('GET', 'http://example.com/test')
             ->withAttribute('matomo.attributes', [
                 new SiteId(1),
                 new Url('http://example.com/custom-url')
@@ -305,7 +302,7 @@ final class TrackingTest extends TestCase
     #[Test]
     public function tracksServerRequestsWithDoNotTrackDisabled(): void
     {
-        $serverRequest = $this->serverRequestFactory->createServerRequest('GET', 'http://example.com/test')
+        $serverRequest = $this->httpFactory->createServerRequest('GET', 'http://example.com/test')
             ->withHeader('DNT', '0')
             ->withAttribute('matomo.attributes', [new SiteId(1)]);
 
@@ -317,7 +314,7 @@ final class TrackingTest extends TestCase
     #[Test]
     public function skipsServerRequestsWithDoNotTrackEnabled(): void
     {
-        $serverRequest = $this->serverRequestFactory->createServerRequest('GET', 'http://example.com/test')
+        $serverRequest = $this->httpFactory->createServerRequest('GET', 'http://example.com/test')
             ->withHeader('DNT', '1')
             ->withAttribute('matomo.attributes', [new SiteId(1)]);
 
@@ -329,7 +326,7 @@ final class TrackingTest extends TestCase
     #[Test]
     public function skipsServerRequestsWithGlobalPrivacyControlEnabled(): void
     {
-        $serverRequest = $this->serverRequestFactory->createServerRequest('GET', 'http://example.com/test')
+        $serverRequest = $this->httpFactory->createServerRequest('GET', 'http://example.com/test')
             ->withHeader('Sec-GPC', '1')
             ->withAttribute('matomo.attributes', [new SiteId(1)]);
 
