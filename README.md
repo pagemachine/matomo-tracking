@@ -240,6 +240,7 @@ parameters:
 | `ActionName` | `action_name` |
 | `ApiVersion` (*) | `apiv` |
 | `AuthToken` | `token_auth` |
+| `BotHandling` | `bots` / `recMode` |
 | `BotTracking` | `bots` |
 | `CustomAction` | `ca` |
 | `Download` | `download`, `url`, `ca` |
@@ -257,6 +258,7 @@ parameters:
 | `OrderTax` | `ec_tx` |
 | `Random` (*) | `rand` |
 | `Recording` (*) | `rec` |
+| `RecordingMode` | `recMode` |
 | `ReferrerUrl` | `urlref` |
 | `Search` | `search`, `search_count`, `search_cat`, `ca` |
 | `SearchCategory` | `search_cat` |
@@ -298,3 +300,18 @@ final class ExampleDimension implements AttributeInterface
 
 The keys of the iterable (`array`, `\Generator`, etc.) returned by `toParameters()`
 must be parameters of the [Matomo Tracking HTTP API](https://developer.matomo.org/api-reference/tracking-api).
+
+### Bot Handling
+
+By default Matomo tries to detect bot traffic and discards it. This default behavior
+can be adjusted by setting the `BotHandling` attribute which is a convenient wrapper
+for all variants:
+
+| Behavior | Attribute |
+| --- | --- |
+| Track human visits only, ignore bots | `BotHandling::IgnoreBots` |
+| Track bots only, ignore human visits | `BotHandling::BotsOnly` |
+| Track bots as human visits | `BotHandling::BotsAsHumans` |
+| Track human visits and bots separately | `BotHandling::Auto` |
+
+(Alternatively `BotTracking` and `RecordingMode` can be used directly.)
